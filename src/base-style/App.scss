@@ -63,3 +63,20 @@ svg{
 .section{
   padding-top: 45px;
 }
+
+.react-multi-carousel-list{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(0% + 1px);
+}
+.react-multiple-carousel__arrow--right{
+  right: calc(0% + 1px);
+}

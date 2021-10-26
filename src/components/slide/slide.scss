@@ -16,6 +16,8 @@
         max-width: 100px;
         max-height: 40px;
         margin-bottom: 30px;
+        user-select: none;
+        pointer-events: none;
       }
 
       .slider-product-info-content {
@@ -25,10 +27,12 @@
           font-size: 38px;
           margin-bottom: 10px;
           margin-right: 25px;
+          user-select: none;
 
           span {
             display: block;
             color: $lightGreen;
+            user-select: none;
 
           }
         }
@@ -54,5 +58,9 @@
         }
       }
     }
+  }
+  .slider-product-photo{
+    user-select: none;
+    pointer-events: none;
   }
 }
