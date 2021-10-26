@@ -1,0 +1,58 @@
+@import "src/base-style/colors";
+
+.slider-product {
+  .slider-product-inner {
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+    height: 100%;
+    background: $F4wheat;
+    border-radius: 20px;
+    padding-left: 60px;
+
+    .slider-product-info {
+
+      .slider-product-info-logo {
+        max-width: 100px;
+        max-height: 40px;
+        margin-bottom: 30px;
+      }
+
+      .slider-product-info-content {
+
+        .slider-product-info-content-title {
+          font-weight: 700;
+          font-size: 38px;
+          margin-bottom: 10px;
+          margin-right: 25px;
+
+          span {
+            display: block;
+            color: $lightGreen;
+
+          }
+        }
+
+        .slider-product-info-content-button {
+          border-radius: 110px;
+          padding: 15px 55px;
+          font-size: 16px;
+          font-weight: 700;
+          background: none;
+          border: 1px solid $lightGreen;
+          transition: all .3s;
+          cursor: pointer;
+
+          &:active {
+            transform: translateY(2px);
+          }
+
+          &:hover {
+            background: $lightGreen;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

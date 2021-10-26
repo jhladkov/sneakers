@@ -1,0 +1,83 @@
+@import "../../base-style/colors";
+
+header {
+  padding: 44px 0;
+  border-bottom: 1px solid $EAwite;
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-project-info {
+      .block-info-logo {
+        max-width: 44px;
+        margin-right: 16px;
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+
+    .block-info {
+      display: flex;
+      align-items: center;
+
+      .block-info-titles {
+        .block-info-titles-pre_title {
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        .block-info-titles-sub_title {
+          color: $darkGray;
+        }
+      }
+    }
+
+    .header-navigation {
+      display: flex;
+      align-items: flex-start;
+
+
+      .header-navigation-basket {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 30px;
+
+        &:hover {
+          .header-navigation-basket-price {
+            color: $pink;
+            transition: all .3s;
+          }
+          .nav-svg {
+            fill: $pink;
+            transition: all .3s;
+          }
+        }
+
+        .header-navigation-basket-svg {
+          margin-right: 10px;
+        }
+      }
+
+      .header-navigation-list {
+
+        .header-navigation-list-link{
+          margin-right: 30px;
+          &:last-child{
+            margin-right: 0;
+          }
+          &:hover{
+            .nav-svg{
+              fill: $pink;
+              transition: all .3s;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}
