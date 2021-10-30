@@ -5,8 +5,9 @@
 }
 body{
   margin: 0;
-  height: 100vh;
   font-family: 'Inter', sans-serif;
+  height: 100%;
+  padding-bottom: 40px;
 }
 html{
   min-height: 100%;
@@ -79,4 +80,9 @@ svg{
 }
 .react-multiple-carousel__arrow--right{
   right: calc(0% + 1px);
+}
+.title{
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: 700;
 }

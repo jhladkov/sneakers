@@ -17,3 +17,17 @@ export const fetchSneakers = () => {
         }
     }
 }
+
+export const addItemToCart = (arr:object[] | []) => {
+    return{
+        type:HomeActionType.ADD_SNEAKERS_TO_CART,
+        payload:arr
+    }
+}
+
+export const addItemToLike = (arr:object[] | []) => {
+    return{
+        type:HomeActionType.ADD_SNEAKERS_TO_LIKE,
+        payload:arr
+    }
+}

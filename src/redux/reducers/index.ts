@@ -6,5 +6,5 @@ export const rootReducer = combineReducers({
 })
 
 
-export type RootState = ReturnType<typeof rootReducer> // https://www.typescriptlang.org/docs/handbook/utility-types.html
+export type RootState = ReturnType<typeof rootReducer>
 

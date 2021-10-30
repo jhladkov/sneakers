@@ -1,0 +1,121 @@
+@import "src/base-style/colors";
+
+.sneakers-inner {
+  display: flex;
+  flex-wrap: wrap;
+
+  .sneakers-block {
+    max-width: 210px;
+    border-radius: 40px;
+    border: 1px solid $lightGray;
+    margin-right: 40px;
+
+    .sneakers-block-wrapper {
+      padding: 20px 20px;
+      display: flex;
+      flex-direction: column;
+
+      .sneakers-block-wrapper-like {
+        &:hover {
+          background: $transPink;
+          border-color: $transPink;
+
+          .add-like-svg {
+            fill: $pink;
+          }
+        }
+      }
+
+      .sneakers-block-wrapper-img {
+        max-width: 133px;
+        margin: 0 auto;
+        user-select: none;
+      }
+
+      .sneakers-block-wrapper-name {
+        text-align: start;
+        font-size: 15px;
+        margin-bottom: 15px;
+      }
+
+      .sneakers-block-inner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .price-block {
+          margin-right: 46px;
+          text-align: start;
+
+          .price-block-title {
+            font-size: 11px;
+            color: $lightGray;
+          }
+
+          .price-block-price {
+            font-weight: 700;
+            font-size: 14px;
+          }
+        }
+
+
+      }
+
+      .sneakers-block-inner-add {
+        &:hover {
+          background-color: $black;
+
+          .add-svg {
+            fill: $white;
+          }
+        }
+
+        .add-svg {
+        }
+      }
+    }
+  }
+}
+
+.add {
+  max-width: 21px;
+  cursor: pointer;
+  padding: 18px 18px;
+  position: relative;
+  border: 1px solid $lightGray;
+  border-radius: 7px;
+  transition: all .3s;
+}
+
+.add-svg {
+  position: absolute;
+  transition: all .3s;
+  top: 23%;
+  left: 22%;
+}
+
+.added {
+  background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+
+  &:hover {
+    background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+
+    .add-svg {
+      fill: $white;
+    }
+  }
+
+  .add-svg {
+    fill: $white;
+  }
+}
+
+.added-like {
+  background: $transPink;
+  border-color: $transPink;
+
+  .add-like-svg {
+    fill: $pink;
+  }
+}
+

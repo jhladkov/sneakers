@@ -1,12 +1,13 @@
 import React, {FC} from 'react';
 
 interface TitleProps {
-    text: string
+    text: string;
+    className: string;
 }
 
-const Title:FC<TitleProps> = ({text}) => {
+const Title:FC<TitleProps> = ({text,className}) => {
     return (
-        <h2>{text}</h2>
+        <h2 className={className}>{text}</h2>
     );
 };
 
