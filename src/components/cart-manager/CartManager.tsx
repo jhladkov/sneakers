@@ -15,7 +15,7 @@ const CartManager: FC<CartManagerProps> = ({className, cartItems}) => {
         <div className={`cart ${className}`}>
             <Title text='Корзина' className='cart-title title'/>
             {
-                cartItems.length > 0
+              cartItems && cartItems.length > 0
                     ? cartItems.map((item: any) => {
                         return <CartManagerItem key={item.id + 0.5} addItemToCart={addItemToCart} cartItems={cartItems} price={item.price} img={item.img} name={item.name} id={item.id}/>
                     })

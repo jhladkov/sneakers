@@ -32,15 +32,31 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
     const [addBuy, setAddBuy] = useState<boolean>(false)
     const [addLike, setAddLike] = useState<boolean>(false)
 
-    // useEffect(() => {
-    //     cartArr.forEach((item: any) => {
-    //         if (item.id !== id) {
-    //             setAddBuy(false)
-    //         }else{
-    //             setAddBuy(true)
-    //         }
-    //     })
-    // },[cartArr])
+    useEffect(() => {
+        if (cartArr.length === 0) {
+            setAddBuy(false)
+        }else {
+            let check = true
+
+            cartArr.reduce((accum:any, item:any) => {
+                if (accum) {
+                    check = true
+                    setAddBuy(true)
+                    return true
+                }
+                if (item.id === id) {
+                    check = true
+                    console.log('2')
+                    return true
+                }
+                check = false
+                return false
+            },false)
+            if (!check) {
+                setAddBuy(false)
+            }
+        }
+    },[cartArr])
 
 
     const createItem = (img: string, price: number, name: string, id: number): object => {
