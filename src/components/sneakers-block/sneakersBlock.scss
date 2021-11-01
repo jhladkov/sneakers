@@ -9,6 +9,9 @@
     border-radius: 40px;
     border: 1px solid $lightGray;
     margin-right: 40px;
+    &:last-child{
+      margin-right: 0;
+    }
 
     .sneakers-block-wrapper {
       padding: 20px 20px;
@@ -51,28 +54,12 @@
             font-size: 11px;
             color: $lightGray;
           }
-
-          .price-block-price {
-            font-weight: 700;
-            font-size: 14px;
-          }
         }
 
 
       }
 
-      .sneakers-block-inner-add {
-        &:hover {
-          background-color: $black;
 
-          .add-svg {
-            fill: $white;
-          }
-        }
-
-        .add-svg {
-        }
-      }
     }
   }
 }
@@ -116,6 +103,22 @@
 
   .add-like-svg {
     fill: $pink;
+  }
+}
+.price{
+  font-weight: 700;
+  font-size: 14px;
+}
+.add {
+  &:hover {
+    background-color: $black;
+
+    .add-svg {
+      fill: $white;
+    }
+  }
+
+  .add-svg {
   }
 }
 

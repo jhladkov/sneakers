@@ -18,10 +18,11 @@ export const fetchSneakers = () => {
     }
 }
 
-export const addItemToCart = (arr:object[] | []) => {
+export const addItemToCart = (arr:object[] | [],price?:number) => {
     return{
         type:HomeActionType.ADD_SNEAKERS_TO_CART,
-        payload:arr
+        payload:arr,
+        price,
     }
 }
 

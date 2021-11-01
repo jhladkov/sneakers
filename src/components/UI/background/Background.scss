@@ -1,0 +1,18 @@
+.background{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0,0,0, .5);
+  cursor: pointer;
+  transition: all .3s;
+}
+.close{
+  opacity: 0;
+  z-index: -1;
+}
+.open{
+  opacity: 1;
+}

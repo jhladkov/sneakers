@@ -4,9 +4,11 @@ import {Home, HomeAction, HomeActionType} from "../../types/home";
 const initialState: Home = {
     items: [],
     error: null,
+    price: 0,
     loading: false,
     cartItems: [],
-    cartLikes: []
+    cartLikes: [],
+    activeMenu: false
 }
 
 export const homeReducer = (state = initialState, action:HomeAction ) : Home => {
@@ -18,9 +20,12 @@ export const homeReducer = (state = initialState, action:HomeAction ) : Home => 
         case HomeActionType.FETCH_SNEAKERS_ERROR:
             return {...state, error: action.payload}
         case HomeActionType.ADD_SNEAKERS_TO_CART:
-            return {...state,cartItems:action.payload}
+            let sum = state.price + action.price
+            return {...state,cartItems:action.payload,price: sum}
         case HomeActionType.ADD_SNEAKERS_TO_LIKE:
             return {...state, cartLikes: action.payload}
+        case HomeActionType.CHANGE_STATUS_MENU:
+            return {...state, activeMenu: action.payload}
         default:
             return state
     }

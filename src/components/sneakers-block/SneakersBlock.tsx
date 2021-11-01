@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './sneakersBlock.scss'
 
 export interface SneakersBlockProps {
@@ -7,7 +7,7 @@ export interface SneakersBlockProps {
     price: number;
     id: number;
     cartArr: any;
-    addItemToCart: (arr: object[]) => void;
+    addItemToCart: (arr: object[],price?:number) => void;
     addItemToLike: (arr: object[]) => void;
     likeArr: any;
 }
@@ -24,13 +24,24 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
    price,
    name,
    id,
-   cartArr,
+   cartArr, //
    likeArr ,
    addItemToCart,
    addItemToLike
 }) => {
     const [addBuy, setAddBuy] = useState<boolean>(false)
     const [addLike, setAddLike] = useState<boolean>(false)
+
+    // useEffect(() => {
+    //     cartArr.forEach((item: any) => {
+    //         if (item.id !== id) {
+    //             setAddBuy(false)
+    //         }else{
+    //             setAddBuy(true)
+    //         }
+    //     })
+    // },[cartArr])
+
 
     const createItem = (img: string, price: number, name: string, id: number): object => {
         return {
@@ -41,8 +52,8 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
         }
     }
 
-    const changeStatesCart = (array: object[] | []): void => {
-        addItemToCart(array)
+    const changeStatesCart = (array: object[] | [],price?:number): void => {
+        addItemToCart(array,price)
         setAddBuy(!addBuy)
     }
     const changeStatesLike = (array: object[] | []): void => {
@@ -53,11 +64,11 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
     const addItemToCartBuy = () => {
         if (addBuy) {
             const filterArr = cartArr.filter((item: ItemValue) => item.id !== id)
-            changeStatesCart(filterArr)
+            changeStatesCart(filterArr,-price)
         } else {
-            const obj = createItem(img, price, name, id)
+            const obj:any = createItem(img, price, name, id)
             cartArr.push(obj)
-            changeStatesCart(cartArr)
+            changeStatesCart(cartArr,obj.price)
         }
     }
     const addItemToCartLike = () => {
@@ -97,9 +108,9 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                         <span className='price-block-title'>
                             ЦЕНА:
                         </span>
-                        <div className="price-block-price">{price || 0} руб.</div>
+                        <div className="price-block-price price">{price || 0} руб.</div>
                     </div>
-                    <div className={`sneakers-block-inner-add ${addBuy ? 'added' : null} add`}
+                    <div className={`sneakers-block-inner-add ${addBuy ? 'added' : ''} add`}
                          onClick={addItemToCartBuy}>
                         {
                             addBuy
