@@ -3,68 +3,115 @@
 *, *:after, *:before {
   box-sizing: border-box;
 }
-body{
+
+body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   height: 100%;
 }
-html{
+
+html {
   min-height: 100%;
 }
-#root{
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: $white;
+}
+::-webkit-scrollbar-thumb{
+  background: $lightGray;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: $darkGray;
+}
+
+#root {
   height: 100%;
 }
 
-.container{
+.container {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-li, ul{
+li, ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
-main{
+
+main {
   display: flex;
   min-height: 100%;
   flex-direction: column;
 }
-.main-wrapper{
+
+.main-wrapper {
   flex: 1 0 auto;
 }
-img{
+
+img {
   width: 100%;
   height: 100%;
 }
+
 a {
   text-decoration: none;
   color: black;
 }
-p{
+
+p {
   margin: 0;
 }
-svg{
+
+svg {
   width: 21px;
   height: 19px;
   fill: $darkGray;
 }
 
-.button{
+.button {
   outline: none;
-  border: none;
-  background-color: $lightGreen;
+ background: none;
+  border-radius: 110px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid $lightGreen;
+  transition: all .3s;
+  cursor: pointer;
+
+  svg{
+    transition: all .3s;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+
+  &:hover {
+    background: $lightGreen;
+    color: $white;
+    svg{
+      fill: $white;
+    }
+  }
+
 }
-.section{
+
+.section {
   padding-top: 45px;
 }
 
-.react-multi-carousel-list{
+.react-multi-carousel-list {
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -77,15 +124,22 @@ svg{
 .react-multiple-carousel__arrow--left {
   left: calc(0% + 1px);
 }
-.react-multiple-carousel__arrow--right{
+
+.react-multiple-carousel__arrow--right {
   right: calc(0% + 1px);
 }
-.title{
+
+.title {
   margin-bottom: 40px;
   font-size: 32px;
   font-weight: 700;
 }
-.block{
+
+.min {
+  font-size: 24px;
+}
+
+.block {
   overflow: hidden;
   height: 100vh;
 }

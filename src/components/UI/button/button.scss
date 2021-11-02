@@ -1,0 +1,21 @@
+.cart-inner-button{
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  &>div{
+    display: flex;
+    justify-content: center;
+    span{
+      margin: 0 20px;
+    }
+  }
+}
+.cart-pay-info-button{
+  &>div{
+    display: flex;
+    justify-content: center;
+    span{
+      margin: 0 20px;
+    }
+  }
+}
