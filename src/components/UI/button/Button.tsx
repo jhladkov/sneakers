@@ -5,12 +5,12 @@ interface ButtonProps {
     className: string;
     classSvg?: string
     text: string;
-    func?: any
+    onClick?: any
 }
 
-const Button: FC<ButtonProps> = ({className, text, classSvg,func}) => {
+const Button: FC<ButtonProps> = ({className, text, classSvg,onClick}) => {
     return (
-        <button className={className} onClick={func}>
+        <button className={className} onClick={onClick}>
             <div>
                 {
                     classSvg && classSvg === 'go-back'

@@ -32,3 +32,10 @@ export const addItemToLike = (arr:object[] | []) => {
         payload:arr
     }
 }
+
+export const addItemToBought = (arr:object[] | []) => {
+    return {
+        type: HomeActionType.ADD_SNEAKERS_TO_BOUGHT,
+        payload: arr
+    }
+}

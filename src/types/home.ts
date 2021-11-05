@@ -5,6 +5,7 @@ export interface Home {
     price: number;
     cartItems: object[] | [];
     cartLikes: object[] | [];
+    boughtItems: object[] | any[]
     activeMenu: boolean
 }
 
@@ -14,6 +15,7 @@ export enum HomeActionType {
     FETCH_SNEAKERS_ERROR = 'FETCH_SNEAKERS_ERROR',
     ADD_SNEAKERS_TO_CART = 'ADD_SNEAKERS_TO_CART',
     ADD_SNEAKERS_TO_LIKE = 'ADD_SNEAKERS_TO_LIKE',
+    ADD_SNEAKERS_TO_BOUGHT = 'ADD_SNEAKERS_TO_BOUGHT',
     CHANGE_STATUS_MENU = 'CHANGE_STATUS_MENU'
 }
 
@@ -42,6 +44,11 @@ interface AddSneakersToLikeAction {
     payload: object[] | []
 }
 
+interface AddSneakersToBoughtAction {
+    type: HomeActionType.ADD_SNEAKERS_TO_BOUGHT,
+    payload: object[] | []
+}
+
 interface ChangeStatusMenu {
     type: HomeActionType.CHANGE_STATUS_MENU;
     payload: boolean
@@ -55,4 +62,5 @@ export type HomeAction =
     | AddSneakersToCartAction
     | AddSneakersToLikeAction
     | ChangeStatusMenu
+    | AddSneakersToBoughtAction
 

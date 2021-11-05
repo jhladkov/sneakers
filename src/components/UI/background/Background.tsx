@@ -1,15 +1,14 @@
 import React, {FC} from 'react';
 import './Background.scss'
-import {useActions} from "../../../hooks/useActions";
 
 interface BackgroundProps {
     className?: string
+    onClick: (value:boolean) => void
 }
 
-const Background:FC<BackgroundProps> = ({className}) => {
-    const {changeStatusMenu} = useActions()
+const Background:FC<BackgroundProps> = ({className,onClick}) => {
     return (
-        <div className={`background ${className}`} onClick={() => changeStatusMenu(false)}/>
+        <div className={`background ${className}`} onClick={() => onClick(false)}/>
     );
 };
 

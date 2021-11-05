@@ -2,19 +2,28 @@ import React, {FC} from 'react';
 import './cart-manager.scss'
 import CartManagerItem from "../cart-manager-item/CartManagerItem";
 import Title from "../title/Title";
-import {useActions} from "../../hooks/useActions";
 import Button from "../UI/button/Button";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import CartInner from "../cartInner/CartInner";
 
 interface CartManagerProps {
-    className?: string
-    cartItems: object[] | []
+    className?: string;
+    cartItems: object[] | [];
+    successfulPurchase: boolean;
+    addItemToBought: (arr:object[] | []) => void;
+    addItemToCart: (arr:object[] | [], price?: number) => void;
+    completeBuy: (value: boolean) => void;
+    home:any;
+    setSuccessfulPurchase: (value: boolean) => void;
+    changeStatusMenu: (value:boolean) => void
 }
 
-const CartManager: FC<CartManagerProps> = ({className, cartItems}) => {
-    const {home} = useTypedSelector(state => state)
+const CartManager: FC<CartManagerProps> = ({className,changeStatusMenu,setSuccessfulPurchase,home, cartItems,addItemToCart,addItemToBought,successfulPurchase,completeBuy}) => {
 
-    const {addItemToCart, changeStatusMenu} = useActions()
+    const changeArrays = () => {
+        addItemToBought(home.cartItems)
+        addItemToCart([], -home.price)
+        setSuccessfulPurchase(true)
+    }
 
     return (
         <div className={`cart ${className}`}>
@@ -23,24 +32,20 @@ const CartManager: FC<CartManagerProps> = ({className, cartItems}) => {
 
                 <div className="cart-wrapper-item">
                     {
-                        cartItems && cartItems.length > 0
+                          cartItems && cartItems.length > 0
                             ? cartItems.map((item: any) => {
                                 return <CartManagerItem key={item.id + 0.5} addItemToCart={addItemToCart}
                                                         cartItems={cartItems}
                                                         price={item.price} img={item.img} name={item.name} id={item.id}/>
                             })
-                            :
-                            <div className='cart-inner'>
-                                <div className="cart-inner-img">
-                                    <img src="./img/cart-img/box.jpg" alt=""/>
-                                </div>
-                                <Title text='Корзина пустая' className='cart-inner-title title min '/>
-                                <p className='cart-inner-text'>
-                                    Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.
-                                </p>
-                                <Button func={() => changeStatusMenu(false)} className='cart-inner-button button'
-                                        classSvg='go-back' text='Вернуться назад'/>
-                            </div>
+                            : !successfulPurchase
+                                ? <CartInner img='./img/cart-img/box.jpg' changeStatusMenu={changeStatusMenu}
+                                       textContent='Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'
+                                       textTitle='Корзина пустая'
+                                />
+                              : <CartInner img='./img/cart-img/buy-complete.jpg' changeStatusMenu={completeBuy}
+                                           textContent='Ваш заказ #18 скоро будет передан курьерской доставке'
+                                           textTitle='Заказ оформлен!'/>
                     }
                 </div>
                 {
@@ -52,7 +57,8 @@ const CartManager: FC<CartManagerProps> = ({className, cartItems}) => {
                                     <div className="cart-pay-info-block-dotted-line"></div>
                                     <div className="cart-pay-info-block-price price">{home.price}руб.</div>
                                 </div>
-                                <Button className='cart-pay-info-button button' text='Оформить заказ' classSvg='go-buy'/>
+                                <Button className='cart-pay-info-button button' onClick={changeArrays} text='Оформить заказ'
+                                        classSvg='go-buy'/>
                             </div>
                         </div>
                         : null
