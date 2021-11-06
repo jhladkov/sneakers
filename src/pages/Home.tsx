@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect} from 'react';
 import Slide from "../components/slide/Slide";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -12,18 +12,12 @@ import SneakersBlock from "../components/sneakers-block/SneakersBlock";
 
 const Home: FC = () => {
     const {home} = useTypedSelector(state => state)
-    // const [number, setNumber] = useState(0)
 
     const {fetchSneakers, addItemToCart, addItemToLike} = useActions()
 
     useEffect(() => {
         fetchSneakers()
     }, [])
-
-    // useEffect(() => {
-    //     setNumber(Math.random())
-    //     console.log('change Home cartItems')
-    // }, [home.cartItems])
 
 
     return (

@@ -34,7 +34,7 @@ const CartManager: FC<CartManagerProps> = ({className,changeStatusMenu,setSucces
                     {
                           cartItems && cartItems.length > 0
                             ? cartItems.map((item: any) => {
-                                return <CartManagerItem key={item.id + 0.5} addItemToCart={addItemToCart}
+                                return <CartManagerItem key={item.id + Math.random()} addItemToCart={addItemToCart}
                                                         cartItems={cartItems}
                                                         price={item.price} img={item.img} name={item.name} id={item.id}/>
                             })

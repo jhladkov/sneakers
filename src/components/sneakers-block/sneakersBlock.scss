@@ -1,68 +1,71 @@
 @import "src/base-style/colors";
 
+
 .sneakers-inner {
   display: flex;
   flex-wrap: wrap;
+}
 
-  .sneakers-block {
-    max-width: 210px;
-    border-radius: 40px;
-    border: 1px solid $lightGray;
-    margin-right: 40px;
-    &:last-child{
-      margin-right: 0;
+.sneakers-block {
+  max-width: 210px;
+  border-radius: 40px;
+  border: 1px solid $lightGray;
+  margin-right: 40px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .sneakers-block-wrapper {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+
+    .sneakers-block-wrapper-like {
+      &:hover {
+        background: $transPink;
+        border-color: $transPink;
+
+        .add-like-svg {
+          fill: $pink;
+        }
+      }
     }
 
-    .sneakers-block-wrapper {
-      padding: 20px 20px;
+    .sneakers-block-wrapper-img {
+      max-width: 133px;
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    .sneakers-block-wrapper-name {
+      text-align: start;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .sneakers-block-inner {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      width: 100%;
 
-      .sneakers-block-wrapper-like {
-        &:hover {
-          background: $transPink;
-          border-color: $transPink;
-
-          .add-like-svg {
-            fill: $pink;
-          }
-        }
-      }
-
-      .sneakers-block-wrapper-img {
-        max-width: 133px;
-        margin: 0 auto;
-        user-select: none;
-      }
-
-      .sneakers-block-wrapper-name {
+      .price-block {
+        margin-right: 46px;
         text-align: start;
-        font-size: 15px;
-        margin-bottom: 15px;
-      }
 
-      .sneakers-block-inner {
-        display: flex;
-        align-items: center;
-        width: 100%;
-
-        .price-block {
-          margin-right: 46px;
-          text-align: start;
-
-          .price-block-title {
-            font-size: 11px;
-            color: $lightGray;
-          }
+        .price-block-title {
+          font-size: 11px;
+          color: $lightGray;
         }
-
-
       }
 
 
     }
+
+
   }
 }
+
 
 .add {
   max-width: 21px;
@@ -105,10 +108,12 @@
     fill: $pink;
   }
 }
-.price{
+
+.price {
   font-weight: 700;
   font-size: 14px;
 }
+
 .add {
   &:hover {
     background-color: $black;
@@ -118,7 +123,6 @@
     }
   }
 
-  .add-svg {
-  }
+
 }
 

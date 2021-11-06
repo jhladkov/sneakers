@@ -1,4 +1,5 @@
 @import "colors";
+@import "src/components/sneakers-block/sneakersBlock";
 
 *, *:after, *:before {
   box-sizing: border-box;
@@ -142,4 +143,12 @@ svg {
 .block {
   overflow: hidden;
   height: 100vh;
+}
+
+.section-inner{
+  display: flex;
+  align-items: flex-start;
+  .section-inner-svg{
+    margin-right: 20px;
+  }
 }
