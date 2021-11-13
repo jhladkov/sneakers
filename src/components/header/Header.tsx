@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import './header.scss'
 import '../../base-style/colors.scss'
 import {NavLink} from "react-router-dom";
@@ -9,7 +9,7 @@ import {useActions} from "../../hooks/useActions";
 
 const Header: FC = () => {
     const {home} = useTypedSelector(state => state)
-
+    console.log('render header')
     const {changeStatusMenu} = useActions()
 
     return (
@@ -51,4 +51,6 @@ const Header: FC = () => {
     );
 };
 
-export default Header;
+export default memo(Header, () => {
+    return true
+})

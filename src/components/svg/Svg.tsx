@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC,memo} from 'react';
 
 interface SvgProps {
     className: string;
@@ -15,4 +15,4 @@ const Svg: FC<SvgProps> = ({path, viewBox, className}) => {
     );
 };
 
-export default Svg;
+export default memo(Svg);

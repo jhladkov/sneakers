@@ -26,7 +26,7 @@ const Like:FC = () => {
                 {
                     home.cartLikes.length > 0
                         ? home.cartLikes.map((item:any) => {
-                            return <SneakersBlock key={item.id + Math.random()}  addItemToLike={addItemToLike}
+                            return <SneakersBlock key={item.id + item.id}  addItemToLike={addItemToLike}
                                                   addItemToCart={addItemToCart} likeArr={home.cartLikes}
                                                   cartArr={home.cartItems} id={item.id} img={item.img}
                                                   price={item.price} name={item.name}

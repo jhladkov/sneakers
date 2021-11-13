@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState,memo} from 'react';
 import CartManager from "../cart-manager/CartManager";
 import Background from "../UI/background/Background";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
@@ -32,4 +32,4 @@ const Cart: FC = () => {
     );
 };
 
-export default Cart;
+export default memo(Cart);

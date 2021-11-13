@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect,memo} from 'react';
 import Slide from "../components/slide/Slide";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -26,7 +26,7 @@ const Home: FC = () => {
                 <Slide/>
                 <Slide/>
                 <Slide/>
-            </Carousel>;
+            </Carousel>
 
 
             <Section className='section sneakers'>

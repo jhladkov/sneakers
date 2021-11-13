@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC,memo} from 'react';
 import Button from "../UI/button/Button";
 import './slide.scss'
 import Section from "../../hoc/Section";
@@ -27,4 +27,4 @@ const Slide: FC = () => {
     );
 };
 
-export default Slide;
+export default memo(Slide);

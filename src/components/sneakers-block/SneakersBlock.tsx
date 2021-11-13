@@ -1,5 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useState,memo} from 'react';
 import Svg from "../svg/Svg";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 export interface SneakersBlockProps {
     img: string;
@@ -35,6 +36,7 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                                                }) => {
     const [addBuy, setAddBuy] = useState<boolean>(false)
     const [addLike, setAddLike] = useState<boolean>(false)
+    // const cartArr:any = useTypedSelector(state => state.home.cartItems)
 
     useEffect(() => {
         if (!disabledAdd) {
@@ -185,4 +187,18 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
     );
 };
 
-export default SneakersBlock;
+
+// export default memo(SneakersBlock,(lastProps,nextProps) => {
+//     console.log(nextProps)
+//     nextProps.cartArr.forEach((item:any) => {
+//         if (item['id'] !== nextProps.id) {
+//             return true
+//         }else{
+//             return false
+//         }
+//     })
+//
+//     return true
+// });
+
+export default memo(SneakersBlock)
