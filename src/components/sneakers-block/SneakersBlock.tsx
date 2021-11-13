@@ -202,3 +202,6 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
 // });
 
 export default memo(SneakersBlock)
+
+
+console.log('test')
