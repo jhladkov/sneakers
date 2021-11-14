@@ -9,7 +9,7 @@ import {NavLink} from "react-router-dom";
 
 const Purchases:FC = () => {
     const {home} = useTypedSelector(state => state)
-    const {addItemToCart, addItemToLike} = useActions()
+    const {changeDataSneakers} = useActions()
 
     return (
         <Section className='section purchases'>
@@ -22,18 +22,18 @@ const Purchases:FC = () => {
                 <Title text='Мои покупки' className='purchases-title title'/>
             </div>
             <div className="purchases-wrapper sneakers-inner">
-                {
-                    home.boughtItems.length > 0
-                        ? home.boughtItems.map(item => {
-                        return <SneakersBlock key={item.id + Math.random()}  addItemToLike={addItemToLike}
-                                              addItemToCart={addItemToCart} likeArr={home.cartLikes}
-                                              cartArr={home.cartItems} id={item.id} img={item.img}
-                                              price={item.price} name={item.name} disabledLike={true}
-                                              disabledAdd={true}
-                        />
-                    })
-                        : <h1>Sorry</h1>
-                }
+                {/*{*/}
+                {/*    home.boughtItems.length > 0*/}
+                {/*        ? home.boughtItems.map(item => {*/}
+                {/*        return <SneakersBlock key={item.id + Math.random()}  addItemToLike={addItemToLike}*/}
+                {/*                              addItemToCart={addItemToCart} likeArr={home.cartLikes}*/}
+                {/*                              cartArr={home.cartItems} id={item.id} img={item.img}*/}
+                {/*                              price={item.price} name={item.name} disabledLike={true}*/}
+                {/*                              disabledAdd={true}*/}
+                {/*        />*/}
+                {/*    })*/}
+                {/*        : <h1>Sorry</h1>*/}
+                {/*}*/}
             </div>
         </Section>
     );

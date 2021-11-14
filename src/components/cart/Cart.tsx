@@ -7,7 +7,7 @@ import {useActions} from "../../hooks/useActions";
 const Cart: FC = () => {
     const {home} = useTypedSelector(state => state)
 
-    const {addItemToCart, changeStatusMenu, addItemToBought} = useActions();
+    const { changeStatusMenu,changeDataSneakers,} = useActions();
 
     const [successfulPurchase, setSuccessfulPurchase] = useState(false)
 
@@ -20,8 +20,7 @@ const Cart: FC = () => {
 
     return (
         <div>
-            <CartManager className={home.activeMenu ? 'active' : ''} addItemToCart={addItemToCart}
-                         addItemToBought={addItemToBought} cartItems={home.cartItems}
+            <CartManager className={home.activeMenu ? 'active' : ''} changeDataSneakers={changeDataSneakers}
                          successfulPurchase={successfulPurchase} completeBuy={completeBuy} setSuccessfulPurchase={setSuccessfulPurchase}
                          home={home} changeStatusMenu={changeStatusMenu}
 

@@ -9,7 +9,7 @@ import {useActions} from "../hooks/useActions";
 
 const Like:FC = () => {
     const {home} = useTypedSelector(state => state)
-    const {addItemToCart, addItemToLike} = useActions()
+    const {changeDataSneakers} = useActions()
 
     return (
         <Section className='section like'>
@@ -24,11 +24,11 @@ const Like:FC = () => {
 
             <div className="like-wrapper sneakers-inner">
                 {
-                    home.cartLikes.length > 0
-                        ? home.cartLikes.map((item:any) => {
-                            return <SneakersBlock key={item.id + item.id}  addItemToLike={addItemToLike}
-                                                  addItemToCart={addItemToCart} likeArr={home.cartLikes}
-                                                  cartArr={home.cartItems} id={item.id} img={item.img}
+                    home.items.length > 0
+                        ? home.items.filter((item:any) => item.liked).map((item:any,index) => {
+                            return <SneakersBlock key={item.id + item.id} index={index} arraySneakers={home.items}
+                                                  changeDataSneakers={changeDataSneakers}
+                                                  id={item.id} img={item.img}
                                                   price={item.price} name={item.name}
                             />
                         })

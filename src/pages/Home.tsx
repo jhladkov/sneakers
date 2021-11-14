@@ -1,4 +1,4 @@
-import React, {FC, useEffect,memo} from 'react';
+import React, {FC, useEffect, memo, useMemo} from 'react';
 import Slide from "../components/slide/Slide";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -13,7 +13,8 @@ import SneakersBlock from "../components/sneakers-block/SneakersBlock";
 const Home: FC = () => {
     const {home} = useTypedSelector(state => state)
 
-    const {fetchSneakers, addItemToCart, addItemToLike} = useActions()
+    const {fetchSneakers, changeDataSneakers} = useActions()
+
 
     useEffect(() => {
         fetchSneakers()
@@ -36,10 +37,10 @@ const Home: FC = () => {
                         home.error
                             ? <div>{home.error}</div>
                             : home.items &&
-                            home.items.map((item: any) => {
-                                return <SneakersBlock key={item.id}  addItemToLike={addItemToLike}
-                                                      addItemToCart={addItemToCart} likeArr={home.cartLikes}
-                                                      cartArr={home.cartItems} id={item.id} img={item.img}
+                            home.items.map((item: any,index) => {
+                                return <SneakersBlock key={item.id}  changeDataSneakers={changeDataSneakers}
+                                                      index={index}
+                                                      id={item.id} img={item.img} arraySneakers={home.items}
                                                       price={item.price} name={item.name}/>
                             })
                     }
@@ -51,4 +52,4 @@ const Home: FC = () => {
     );
 };
 
-export default Home;
+export default memo(Home);

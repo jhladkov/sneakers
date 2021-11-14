@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState,memo} from 'react';
+import React, {FC, useEffect, useState, memo} from 'react';
 import Svg from "../svg/Svg";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 
@@ -6,11 +6,12 @@ export interface SneakersBlockProps {
     img: string;
     name: string;
     price: number;
+    arraySneakers?: any;
+    selected?: boolean;
+    index: number;
+    liked?: boolean;
     id: number;
-    cartArr: any;
-    addItemToCart: (arr: object[], price?: number) => void;
-    addItemToLike: (arr: object[]) => void;
-    likeArr: any;
+    changeDataSneakers: (arr: object[], price?: number) => void;
     disabledAdd?: boolean;
     disabledLike?: boolean;
 }
@@ -27,73 +28,74 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                                                    price,
                                                    name,
                                                    id,
-                                                   cartArr,
-                                                   likeArr,
-                                                   addItemToCart,
-                                                   addItemToLike,
+                                                   index,
+                                                   changeDataSneakers,
                                                    disabledAdd,
-                                                   disabledLike
+                                                   disabledLike,
+                                                   arraySneakers,
                                                }) => {
-    const [addBuy, setAddBuy] = useState<boolean>(false)
-    const [addLike, setAddLike] = useState<boolean>(false)
+    const [addedBuy, setAddBuy] = useState<boolean>(arraySneakers[index].selected)
+    const [addedLike, setAddLike] = useState<boolean>(arraySneakers[index].liked)
     // const cartArr:any = useTypedSelector(state => state.home.cartItems)
 
-    useEffect(() => {
-        if (!disabledAdd) {
-            if (cartArr.length === 0) {
-                setAddBuy(false)
-            } else {
-                let check = true
+    // useEffect(() => {
+    //     if (!disabledAdd) {
+    //         if (cartArr.length === 0) {
+    //             setAddBuy(false)
+    //         } else {
+    //             let check = true
+    //
+    //             cartArr.reduce((accum: any, item: any) => {
+    //                 if (accum) {
+    //                     check = true
+    //                     setAddBuy(true)
+    //                     return true
+    //                 }
+    //                 if (item.id === id) {
+    //                     check = true
+    //                     setAddBuy(true)
+    //                     return true
+    //                 }
+    //                 check = false
+    //                 return false
+    //             }, false)
+    //             if (!check) {
+    //                 setAddBuy(false)
+    //             }
+    //         }
+    //     }
+    // }, [cartArr])
+    //
+    // useEffect(() => {
+    //     if (!disabledLike) {
+    //         if (likeArr.length === 0) {
+    //             setAddLike(false)
+    //         } else {
+    //             let check = true
+    //
+    //             likeArr.reduce((accum: any, item: any) => {
+    //                 if (accum) {
+    //                     check = true
+    //                     setAddLike(true)
+    //                     return true
+    //                 }
+    //                 if (item.id === id) {
+    //                     check = true
+    //                     setAddLike(true)
+    //                     return true
+    //                 }
+    //                 check = false
+    //                 return false
+    //             }, false)
+    //             if (!check) {
+    //                 setAddLike(false)
+    //             }
+    //         }
+    //     }
+    // }, [likeArr])
 
-                cartArr.reduce((accum: any, item: any) => {
-                    if (accum) {
-                        check = true
-                        setAddBuy(true)
-                        return true
-                    }
-                    if (item.id === id) {
-                        check = true
-                        setAddBuy(true)
-                        return true
-                    }
-                    check = false
-                    return false
-                }, false)
-                if (!check) {
-                    setAddBuy(false)
-                }
-            }
-        }
-    }, [cartArr])
 
-    useEffect(() => {
-        if (!disabledLike) {
-            if (likeArr.length === 0) {
-                setAddLike(false)
-            } else {
-                let check = true
-
-                likeArr.reduce((accum: any, item: any) => {
-                    if (accum) {
-                        check = true
-                        setAddLike(true)
-                        return true
-                    }
-                    if (item.id === id) {
-                        check = true
-                        setAddLike(true)
-                        return true
-                    }
-                    check = false
-                    return false
-                }, false)
-                if (!check) {
-                    setAddLike(false)
-                }
-            }
-        }
-    }, [likeArr])
-
+    console.log(addedBuy)
 
     const createItem = (img: string, price: number, name: string, id: number): object => {
         return {
@@ -106,49 +108,44 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
 
     const changeStatesCart = (array: object[] | [], price?: number): void => {
         if (!disabledAdd) {
-            addItemToCart(array, price)
-            setAddBuy(!addBuy)
+            changeDataSneakers(array, price)
+            setAddBuy(!addedBuy)
         }
     }
     const changeStatesLike = (array: object[] | []): void => {
         if (!disabledLike) {
-            addItemToLike(array)
-            setAddLike(!addLike)
+            changeDataSneakers(array)
+            setAddLike(!addedLike)
         }
     }
 
     const addItemToCartBuy = () => {
         if (!disabledAdd) {
-            if (addBuy) {
-                const filterArr = cartArr.filter((item: ItemValue) => item.id !== id)
-                changeStatesCart(filterArr, -price)
-            } else {
-                const obj: any = createItem(img, price, name, id)
-                cartArr.push(obj)
-                changeStatesCart(cartArr, obj.price)
+            let valuePrice = price
+            if (addedBuy) {
+                valuePrice = -price
             }
+
+            arraySneakers[index].selected = !addedBuy
+            setAddBuy(!addedBuy)
+            changeDataSneakers(arraySneakers, valuePrice)
         }
     }
     const addItemToCartLike = () => {
         if (!disabledLike) {
-            if (addLike) {
-                const filterArr = likeArr.filter((item: any) => item.id !== id)
-                changeStatesLike(filterArr)
-            } else {
-                const obj = createItem(img, price, name, id)
-                likeArr.push(obj)
-                changeStatesLike(likeArr)
-            }
+            arraySneakers[index].liked = !addedLike
+            setAddLike(!addedLike)
+            changeDataSneakers(arraySneakers, 0)
         }
     }
 
     return (
         <div className="sneakers-block">
             <div className="sneakers-block-wrapper">
-                <div className={`sneakers-block-wrapper-like ${addLike ? 'added-like' : null} add`}
+                <div className={`sneakers-block-wrapper-like ${addedLike ? 'added-like' : null} add`}
                      onClick={addItemToCartLike}>
                     {
-                        !disabledLike && addLike
+                        !disabledLike && addedLike
                             ? <Svg className='add-like-svg add-svg'
                                    path='M10 3.22l-0.61-0.6c-0.983-0.931-2.314-1.504-3.779-1.504-3.038 0-5.5 2.462-5.5 5.5 0 1.462 0.571 2.791 1.501 3.776l-0.002-0.003 8.39 8.39 8.39-8.4c0.928-0.983 1.499-2.312 1.499-3.774 0-3.038-2.462-5.5-5.5-5.5-1.465 0-2.796 0.573-3.782 1.506l0.003-0.002-0.61 0.61z'
                                    viewBox='0 0 20 20'/>
@@ -168,10 +165,10 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                         </span>
                         <div className="price-block-price price">{price || 0} руб.</div>
                     </div>
-                    <div className={`sneakers-block-inner-add ${addBuy ? 'added' : ''} add`}
+                    <div className={`sneakers-block-inner-add ${addedBuy ? 'added' : ''} add`}
                          onClick={addItemToCartBuy}>
                         {
-                            !disabledAdd && addBuy
+                            !disabledAdd && addedBuy
                                 ? <Svg className='add-svg'
                                        path='M19.293 5.293l-10.293 10.293-4.293-4.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414l5 5c0.391 0.391 1.024 0.391 1.414 0l11-11c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0z'
                                        viewBox="0 0 24 24"/>

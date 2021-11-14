@@ -18,24 +18,24 @@ export const fetchSneakers = () => {
     }
 }
 
-export const addItemToCart = (arr:object[] | [],price?:number) => {
+export const changeDataSneakers = (arr:object[] | [],price?:number) => {
     return{
-        type:HomeActionType.ADD_SNEAKERS_TO_CART,
+        type:HomeActionType.CHANGE_DATA_SNEAKERS,
         payload:arr,
         price,
     }
 }
 
-export const addItemToLike = (arr:object[] | []) => {
-    return{
-        type:HomeActionType.ADD_SNEAKERS_TO_LIKE,
-        payload:arr
-    }
-}
-
-export const addItemToBought = (arr:object[] | []) => {
-    return {
-        type: HomeActionType.ADD_SNEAKERS_TO_BOUGHT,
-        payload: arr
-    }
-}
+// export const addItemToLike = (arr:object[] | []) => {
+//     return{
+//         type:HomeActionType.ADD_SNEAKERS_TO_LIKE,
+//         payload:arr
+//     }
+// }
+//
+// export const addItemToBought = (arr:object[] | []) => {
+//     return {
+//         type: HomeActionType.ADD_SNEAKERS_TO_BOUGHT,
+//         payload: arr
+//     }
+// }
