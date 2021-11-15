@@ -31,12 +31,17 @@ const CartManager: FC<CartManagerProps> = ({
 
     const doBuy = () => {
         const arr: any = []
+        let price = 0
 
         arraySneakers.map((item: any) => {
-            arr.push(item)
+            if (item.selected === true) {
+                arr.push(item)
+                price += item.price
+            }
             item.selected = false
         })
-        changeDataSneakers(arraySneakers)
+        changeDataSneakers(arraySneakers,-price)
+        setSuccessfulPurchase(true)
         addItemToBought(arr)
     }
 

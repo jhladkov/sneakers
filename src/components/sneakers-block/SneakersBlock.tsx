@@ -6,21 +6,14 @@ export interface SneakersBlockProps {
     img: string;
     name: string;
     price: number;
-    arraySneakers?: any;
+    arraySneakers: any;
     selected?: boolean;
     index: number;
     liked?: boolean;
     id: number;
-    changeDataSneakers: (arr: object[], price?: number) => void;
+    changeDataSneakers?: any
     disabledAdd?: boolean;
     disabledLike?: boolean;
-}
-
-interface ItemValue {
-    img: string;
-    id: number;
-    price: number;
-    name: string;
 }
 
 const SneakersBlock: FC<SneakersBlockProps> = ({
@@ -34,14 +27,16 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                                                    disabledLike,
                                                    arraySneakers,
                                                }) => {
-    const [addedBuy, setAddBuy] = useState<boolean>(arraySneakers[index].selected)
-    const [addedLike, setAddLike] = useState<boolean>(arraySneakers[index].liked)
+    const [addedBuy, setAddBuy] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[index].selected)
+    const [addedLike, setAddLike] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[index].liked)
 
+    const dependent = arraySneakers.filter((item: any) => item.selected)
 
-
-
-
-    console.log(addedBuy)
+    useEffect(() => {
+        if (addedBuy !== arraySneakers[index].selected) {
+            setAddBuy(arraySneakers[index].selected)
+        }
+    }, [dependent])
 
     const addItemToCartBuy = () => {
         if (!disabledAdd) {
@@ -109,6 +104,14 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
 };
 
 
-
-export default memo(SneakersBlock)
+export default memo(SneakersBlock, (lastProps, nextProps) => {
+    console.log('nextProps', nextProps)
+    nextProps.arraySneakers.forEach((item:any) => {
+        if (item.id === nextProps.id) {
+            console.log(nextProps.id, item.id, 'changed')
+            return false
+        }
+    })
+    return true
+})
 
