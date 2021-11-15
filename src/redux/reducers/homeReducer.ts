@@ -6,7 +6,8 @@ const initialState: Home = {
     error: null,
     price: 0,
     loading: false,
-    activeMenu: false
+    activeMenu: false,
+    boughtItems: [],
 }
 
 export const homeReducer = (state = initialState, action: HomeAction): Home => {
@@ -22,6 +23,8 @@ export const homeReducer = (state = initialState, action: HomeAction): Home => {
             return {...state, items: action.payload, price: sum}
         case HomeActionType.CHANGE_STATUS_MENU:
             return {...state, activeMenu: action.payload}
+        case HomeActionType.ADD_SNEAKERS_TO_BOUGHT:
+            return {...state, boughtItems: action.payload}
         default:
             return state
     }

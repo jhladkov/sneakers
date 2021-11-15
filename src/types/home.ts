@@ -3,7 +3,8 @@ export interface Home {
     error: null | string;
     loading: boolean;
     price: number;
-    activeMenu: boolean
+    activeMenu: boolean;
+    boughtItems: object[] | []
 }
 
 export enum HomeActionType {

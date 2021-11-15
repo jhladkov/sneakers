@@ -17,7 +17,9 @@ const Home: FC = () => {
 
 
     useEffect(() => {
-        fetchSneakers()
+        if (home.items.length === 0) {
+            fetchSneakers()
+        }
     }, [])
 
 

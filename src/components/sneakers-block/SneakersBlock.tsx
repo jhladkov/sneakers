@@ -36,88 +36,12 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                                                }) => {
     const [addedBuy, setAddBuy] = useState<boolean>(arraySneakers[index].selected)
     const [addedLike, setAddLike] = useState<boolean>(arraySneakers[index].liked)
-    // const cartArr:any = useTypedSelector(state => state.home.cartItems)
 
-    // useEffect(() => {
-    //     if (!disabledAdd) {
-    //         if (cartArr.length === 0) {
-    //             setAddBuy(false)
-    //         } else {
-    //             let check = true
-    //
-    //             cartArr.reduce((accum: any, item: any) => {
-    //                 if (accum) {
-    //                     check = true
-    //                     setAddBuy(true)
-    //                     return true
-    //                 }
-    //                 if (item.id === id) {
-    //                     check = true
-    //                     setAddBuy(true)
-    //                     return true
-    //                 }
-    //                 check = false
-    //                 return false
-    //             }, false)
-    //             if (!check) {
-    //                 setAddBuy(false)
-    //             }
-    //         }
-    //     }
-    // }, [cartArr])
-    //
-    // useEffect(() => {
-    //     if (!disabledLike) {
-    //         if (likeArr.length === 0) {
-    //             setAddLike(false)
-    //         } else {
-    //             let check = true
-    //
-    //             likeArr.reduce((accum: any, item: any) => {
-    //                 if (accum) {
-    //                     check = true
-    //                     setAddLike(true)
-    //                     return true
-    //                 }
-    //                 if (item.id === id) {
-    //                     check = true
-    //                     setAddLike(true)
-    //                     return true
-    //                 }
-    //                 check = false
-    //                 return false
-    //             }, false)
-    //             if (!check) {
-    //                 setAddLike(false)
-    //             }
-    //         }
-    //     }
-    // }, [likeArr])
+
+
 
 
     console.log(addedBuy)
-
-    const createItem = (img: string, price: number, name: string, id: number): object => {
-        return {
-            img,
-            price,
-            name,
-            id
-        }
-    }
-
-    const changeStatesCart = (array: object[] | [], price?: number): void => {
-        if (!disabledAdd) {
-            changeDataSneakers(array, price)
-            setAddBuy(!addedBuy)
-        }
-    }
-    const changeStatesLike = (array: object[] | []): void => {
-        if (!disabledLike) {
-            changeDataSneakers(array)
-            setAddLike(!addedLike)
-        }
-    }
 
     const addItemToCartBuy = () => {
         if (!disabledAdd) {
@@ -185,20 +109,6 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
 };
 
 
-// export default memo(SneakersBlock,(lastProps,nextProps) => {
-//     console.log(nextProps)
-//     nextProps.cartArr.forEach((item:any) => {
-//         if (item['id'] !== nextProps.id) {
-//             return true
-//         }else{
-//             return false
-//         }
-//     })
-//
-//     return true
-// });
 
 export default memo(SneakersBlock)
 
-
-console.log('test')
