@@ -1,5 +1,6 @@
 @import "colors";
 @import "src/components/sneakers-block/sneakersBlock";
+@import "media";
 
 *, *:after, *:before {
   box-sizing: border-box;
@@ -16,7 +17,7 @@ html {
 }
 
 ::-webkit-scrollbar{
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: $white;
@@ -124,11 +125,15 @@ svg {
 
 .react-multiple-carousel__arrow--left {
   left: calc(0% + 1px);
+  top: calc(49%);
 }
 
 .react-multiple-carousel__arrow--right {
   right: calc(0% + 1px);
+  top: calc(49%);
 }
+
+
 
 .title {
   margin-bottom: 40px;

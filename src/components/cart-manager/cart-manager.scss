@@ -4,7 +4,8 @@
   position: fixed;
   padding: 30px;
   height: 100vh;
-  width: 430px;
+  max-width: 430px;
+  width: 100%;
   background: gray;
   right: 0;
   top: 0;

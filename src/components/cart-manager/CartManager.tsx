@@ -30,7 +30,7 @@ const CartManager: FC<CartManagerProps> = ({
                                            }) => {
 
     const doBuy = () => {
-        const arr: any = []
+        const arr: any = home.boughtItems
         let price = 0
 
         arraySneakers.map((item: any) => {

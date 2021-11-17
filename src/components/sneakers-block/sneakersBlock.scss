@@ -1,16 +1,29 @@
 @import "src/base-style/colors";
 
-
+//.sneakers{
+//  padding-bottom: 20px;
+//}
 .sneakers-inner {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 208px);
+  gap: 40px;
+  //justify-content: center;
 }
 
 .sneakers-block {
   max-width: 210px;
+  width: 100%;
   border-radius: 40px;
   border: 1px solid $lightGray;
   margin-right: 40px;
+  transition: all .3s;
+  margin-bottom: 40px;
+  &:hover{
+    -webkit-box-shadow: 3px 7px 8px -2px rgba(34, 60, 80, 0.19);
+    -moz-box-shadow: 3px 7px 8px -2px rgba(34, 60, 80, 0.19);
+    box-shadow: 3px 7px 8px -2px rgba(34, 60, 80, 0.19);
+    transform: translateY(-20px);
+  }
 
   &:last-child {
     margin-right: 0;

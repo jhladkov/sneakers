@@ -33,8 +33,11 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
     const dependent = arraySneakers.filter((item: any) => item.selected)
 
     useEffect(() => {
-        if (addedBuy !== arraySneakers[index].selected) {
-            setAddBuy(arraySneakers[index].selected)
+        if (!disabledAdd) {
+            if (addedBuy !== arraySneakers[index].selected) {
+                console.log('arraySneakers[index].selected',arraySneakers[index].selected)
+                setAddBuy(arraySneakers[index].selected)
+            }
         }
     }, [dependent])
 
@@ -104,14 +107,16 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
 };
 
 
-export default memo(SneakersBlock, (lastProps, nextProps) => {
-    console.log('nextProps', nextProps)
-    nextProps.arraySneakers.forEach((item:any) => {
-        if (item.id === nextProps.id) {
-            console.log(nextProps.id, item.id, 'changed')
-            return false
-        }
-    })
-    return true
-})
+// export default memo(SneakersBlock, (lastProps, nextProps) => {
+//     console.log('nextProps', nextProps)
+//     nextProps.arraySneakers.forEach((item:any) => {
+//         if (item['id'] === nextProps.index + 1) {
+//             console.log(nextProps.index, item['id'], 'changed')
+//             return false
+//         }
+//     })
+//     return true
+// })
+
+export default SneakersBlock
 
