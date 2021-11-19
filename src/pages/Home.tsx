@@ -13,8 +13,8 @@ import Input from "../components/UI/input/Input";
 
 const Home: FC = () => {
     const {home} = useTypedSelector(state => state)
-    // const [inputValue, setInputValue] = useState<string>('')
-    // const [filterSneakers,setFilterSneakers] = useState<object[] | []>([])
+    const [inputValue, setInputValue] = useState<string>('')
+    const [filterSneakers,setFilterSneakers] = useState<object[] | []>([])
 
     const {fetchSneakers, changeDataSneakers} = useActions()
 
@@ -26,33 +26,25 @@ const Home: FC = () => {
     }, [])
 
 
-    // const filterSneakersFunc = (sneakersText: any, inputValue: any) => {
-    //     let answer = false
-    //     const filterSneakersText = sneakersText.filter((item: any) => item !== ' ')
-    //
-    //     inputValue.forEach((item:any) => {
-    //         if (filterSneakersText.includes(item)) {
-    //             answer = true
-    //         }
-    //     })
-    //
-    //     return answer
-    // }
-    //
-    // const changeInputValue = (value: string) => {
-    //     setInputValue(value)
-    //     findSneakers(value)
-    // }
-    //
-    // const findSneakers = (value: string) => {
-    //     const filterArrSneakers = home.items.filter((item: any) => {
-    //         let test1 = item.name.trim().split('')
-    //         let test2 = value.trim().split('')
-    //         const ans = filterSneakersFunc(test1, test2)
-    //         return ans
-    //     })
-    //     setFilterSneakers(filterArrSneakers)
-    // }
+
+    const changeInputValue = (value: string) => {
+        setInputValue(value)
+        findSneakers(value)
+    }
+
+    const findSneakers = (value: string) => {
+        const filterArrSneakers = home.items.filter((item: any) => {
+            const sneakerText = item.name.toLowerCase().split('').filter((item:any) => item !== ' ').join('')
+            const inputText = value.trim().toLowerCase().split('').filter((item:any) => item !== ' ').join('')
+
+            if (inputText && sneakerText.includes(inputText)) {
+                return true
+            }
+            return false
+        })
+        setFilterSneakers(filterArrSneakers)
+        console.log('filterArrSneakers',filterArrSneakers)
+    }
 
 
     return (
@@ -67,14 +59,14 @@ const Home: FC = () => {
             <Section className='section sneakers'>
                 <div className="sneakers-header">
                     <Title text='Все кросовки' className='sneakers-title title'/>
-                    {/*<Input onChange={event => changeInputValue(event.target.value)} value={inputValue}*/}
-                    {/*       className='sneakers-header-find' placeholder='Поиск...'/>*/}
+                    <Input onChange={event => changeInputValue(event.target.value)} value={inputValue}
+                           className='sneakers-header-find' placeholder='Поиск...'/>
                 </div>
                 <div className="sneakers-inner">
                     {
                         home.error
                             ? <div>{home.error}</div>
-                            : home.items &&                                     // filterSneakers.length === 0 &&
+                            : home.items && filterSneakers.length === 0 && inputValue.length === 0 &&
                             home.items.map((item: any) => {
                                 return <SneakersBlock key={item.id} changeDataSneakers={changeDataSneakers}
                                                       id={item.id} img={item.img} arraySneakers={home.items}
@@ -82,18 +74,17 @@ const Home: FC = () => {
                             })
                     }
 
-                    {/*{*/}
-                    {/*    inputValue.length > 0*/}
-                    {/*        ? filterSneakers.map((item: any, index) => {*/}
-                    {/*            return <SneakersBlock key={item.id} changeDataSneakers={changeDataSneakers}*/}
-                    {/*                                  index={index}*/}
-                    {/*                                  id={item.id} img={item.img} arraySneakers={home.items}*/}
-                    {/*                                  price={item.price} name={item.name}/>*/}
-                    {/*        })*/}
-                    {/*        : filterSneakers.length === 0 &&  inputValue.length > 0*/}
-                    {/*            ? <h2>sorry but we can not to find any sneakers</h2>*/}
-                    {/*            : null*/}
-                    {/*}*/}
+                    {
+                        inputValue.length && filterSneakers.length > 0
+                            ? filterSneakers.map((item: any) => {
+                                return <SneakersBlock key={item.id} changeDataSneakers={changeDataSneakers}
+                                                      id={item.id} img={item.img} arraySneakers={home.items}
+                                                      price={item.price} name={item.name}/>
+                            })
+                            : filterSneakers.length === 0 && inputValue
+                                ? <h2>sorry but we can not to find any sneakers</h2>
+                                : null
+                    }
                 </div>
             </Section>
 
