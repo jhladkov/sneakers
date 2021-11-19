@@ -14,9 +14,20 @@
   background: $white;
   transform: translateX(450px);
 
+  .cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .cart-header-close {
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
   button {
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
     padding: 20px 0;
   }
 
@@ -60,6 +71,7 @@
   justify-content: space-between;
   height: 88%;
 }
-.cart-wrapper-item{
+
+.cart-wrapper-item {
   overflow: auto;
 }

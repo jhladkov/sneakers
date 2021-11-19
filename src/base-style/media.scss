@@ -46,9 +46,22 @@
   .slider-product .slider-product-inner .slider-product-info .slider-product-info-content .slider-product-info-content-title{
     font-size: 20px;
   }
+  .cart-pay{
+    padding-top: 30px;
+  }
 }
 
 @media (max-width: 360px) {
+
+  .item-info-price{
+    margin-bottom: 20px;
+  }
+  .item-info-icon{
+    margin: 0 auto 0 0;
+  }
+  .cart-wrapper{
+    flex-direction: column;
+  }
   .slider-product-info .slider-product-info-content{
     flex-direction: column;
   }

@@ -25,8 +25,8 @@ const Like:FC = () => {
             <div className="like-wrapper sneakers-inner">
                 {
                     home.items.length > 0
-                        ? home.items.filter((item:any) => item.liked).map((item:any,index) => {
-                            return <SneakersBlock key={item.id + item.id} index={index} arraySneakers={home.items}
+                        ? home.items.filter((item:any) => item.liked).map((item:any) => {
+                            return <SneakersBlock key={item.id + item.id} arraySneakers={home.items}
                                                   changeDataSneakers={changeDataSneakers}
                                                   id={item.id} img={item.img}
                                                   price={item.price} name={item.name}

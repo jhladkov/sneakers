@@ -10,6 +10,18 @@
   //justify-content: center;
 }
 
+.sneakers-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .sneakers-header-find {
+    border: 1px solid $lightGray;
+    outline: none;
+    padding: 10px;
+  }
+}
+
 .sneakers-block {
   max-width: 210px;
   width: 100%;

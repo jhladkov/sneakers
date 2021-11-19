@@ -40,7 +40,7 @@ const CartManager: FC<CartManagerProps> = ({
             }
             item.selected = false
         })
-        changeDataSneakers(arraySneakers,-price)
+        changeDataSneakers(arraySneakers, -price)
         setSuccessfulPurchase(true)
         addItemToBought(arr)
     }
@@ -48,14 +48,17 @@ const CartManager: FC<CartManagerProps> = ({
 
     return (
         <div className={`cart ${className}`}>
-            <Title text='Корзина' className='cart-title title min'/>
+            <div className="cart-header">
+                <Title text='Корзина' className='cart-title title min'/>
+                <div className='cart-header-close' onClick={() => changeStatusMenu(false)}>&times;</div>
+            </div>
             <div className="wrapper">
 
                 <div className="cart-wrapper-item">
                     {
-                        arraySneakers && arraySneakers.filter((item:any) => item.selected).length > 0
-                            ? arraySneakers.filter((item: any) => item.selected).map((item: any, index) => {
-                                return <CartManagerItem key={item.id + Math.random()} index={index}
+                        arraySneakers && arraySneakers.filter((item: any) => item.selected).length > 0
+                            ? arraySneakers.filter((item: any) => item.selected).map((item: any) => {
+                                return <CartManagerItem key={item.id + Math.random()} id={item.id}
                                                         changeDataSneakers={changeDataSneakers}
                                                         price={item.price} img={item.img} name={item.name}
                                                         arraySneakers={arraySneakers}/>
@@ -72,7 +75,7 @@ const CartManager: FC<CartManagerProps> = ({
 
                 </div>
                 {
-                    arraySneakers && arraySneakers.filter((item:any) => item.selected).length > 0
+                    arraySneakers && arraySneakers.filter((item: any) => item.selected).length > 0
                         ? <div className='cart-pay'>
                             <div className="cart-pay-info">
                                 <div className="cart-pay-info-block">

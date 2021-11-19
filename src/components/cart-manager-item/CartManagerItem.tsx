@@ -5,15 +5,16 @@ interface CartManagerItemProps {
     img:string;
     price:number;
     name: string;
-    index: number;
+    id:number
+    index?: number;
     changeDataSneakers:any;
     arraySneakers: any
 }
 
-const CartManagerItem:FC<CartManagerItemProps> = ({img,price,name,index,changeDataSneakers,arraySneakers}) => {
+const CartManagerItem:FC<CartManagerItemProps> = ({img,price,name,changeDataSneakers,arraySneakers,id}) => {
 
    const changeDataItems = () => {
-       arraySneakers[index].selected = false
+       arraySneakers[--id].selected = false
        changeDataSneakers(arraySneakers, -price)
    }
 

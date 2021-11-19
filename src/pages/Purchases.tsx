@@ -26,9 +26,9 @@ const Purchases: FC = () => {
             <div className="purchases-wrapper sneakers-inner">
                 {
                     home.boughtItems.length > 0
-                        ? home.boughtItems.map((item: any, index) => {
+                        ? home.boughtItems.map((item: any) => {
                             return <SneakersBlock key={item.id + Math.random()} arraySneakers={home.items}
-                                                  id={item.id} img={item.img} index={index}
+                                                  id={item.id} img={item.img}
                                                   price={item.price} name={item.name} disabledLike={true}
                                                   disabledAdd={true}
                             />

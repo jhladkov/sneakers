@@ -8,7 +8,6 @@ export interface SneakersBlockProps {
     price: number;
     arraySneakers: any;
     selected?: boolean;
-    index: number;
     liked?: boolean;
     id: number;
     changeDataSneakers?: any
@@ -21,25 +20,32 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                                                    price,
                                                    name,
                                                    id,
-                                                   index,
                                                    changeDataSneakers,
                                                    disabledAdd,
                                                    disabledLike,
                                                    arraySneakers,
                                                }) => {
-    const [addedBuy, setAddBuy] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[index].selected)
-    const [addedLike, setAddLike] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[index].liked)
+    const [addedBuy, setAddBuy] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[--id].selected)
+    const [addedLike, setAddLike] = useState<boolean>(disabledLike && disabledAdd ? false : arraySneakers[id].liked)
 
-    const dependent = arraySneakers.filter((item: any) => item.selected)
+    const dependentAdd = arraySneakers.filter((item: any) => item.selected)
+    const dependentLike = arraySneakers.filter((item: any) => item.liked)
 
     useEffect(() => {
         if (!disabledAdd) {
-            if (addedBuy !== arraySneakers[index].selected) {
-                console.log('arraySneakers[index].selected',arraySneakers[index].selected)
-                setAddBuy(arraySneakers[index].selected)
+            if (addedBuy !== arraySneakers[id].selected) {
+                setAddBuy(arraySneakers[id].selected)
             }
         }
-    }, [dependent])
+    }, [dependentAdd])
+
+    useEffect(() => {
+        if (!disabledLike) {
+            if (addedLike !== arraySneakers[id].liked) {
+                setAddBuy(arraySneakers[id].liked)
+            }
+        }
+    },[dependentLike])
 
     const addItemToCartBuy = () => {
         if (!disabledAdd) {
@@ -48,14 +54,14 @@ const SneakersBlock: FC<SneakersBlockProps> = ({
                 valuePrice = -price
             }
 
-            arraySneakers[index].selected = !addedBuy
+            arraySneakers[id].selected = !addedBuy
             setAddBuy(!addedBuy)
             changeDataSneakers(arraySneakers, valuePrice)
         }
     }
     const addItemToCartLike = () => {
         if (!disabledLike) {
-            arraySneakers[index].liked = !addedLike
+            arraySneakers[id].liked = !addedLike
             setAddLike(!addedLike)
             changeDataSneakers(arraySneakers, 0)
         }
