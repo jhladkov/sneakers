@@ -52,5 +52,5 @@ const Header: FC = () => {
 };
 
 export default memo(Header, () => {
-    return true
+    return false
 })

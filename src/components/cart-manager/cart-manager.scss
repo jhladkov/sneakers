@@ -4,7 +4,8 @@
   position: fixed;
   padding: 30px;
   height: 100vh;
-  width: 430px;
+  max-width: 430px;
+  width: 100%;
   background: gray;
   right: 0;
   top: 0;
@@ -13,39 +14,54 @@
   background: $white;
   transform: translateX(450px);
 
+
   button {
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
     padding: 20px 0;
   }
+}
 
-  .cart-inner {
-    text-align: center;
 
-    .cart-inner-img {
-      margin: 0 auto 20px;
-      max-width: 120px;
-    }
+.cart-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .cart-header-close {
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
 
-    .cart-inner-title {
-      margin-bottom: 10px;
-    }
 
-    .cart-inner-text {
-      margin-bottom: 40px;
-      color: $lightGray;
-    }
+
+.cart-inner {
+  text-align: center;
+
+  .cart-inner-img {
+    margin: 0 auto 20px;
+    max-width: 120px;
   }
 
-  .cart-pay-info-block {
-    display: flex;
-    margin-bottom: 30px;
-    align-items: flex-end;
+  .cart-inner-title {
+    margin-bottom: 10px;
+  }
 
-    .cart-pay-info-block-dotted-line {
-      border: 0.1px dotted $lightGray;
-      width: 100%;
-    }
+  .cart-inner-text {
+    margin-bottom: 40px;
+    color: $lightGray;
+  }
+}
+
+.cart-pay-info-block {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: flex-end;
+
+  .cart-pay-info-block-dotted-line {
+    border: 0.1px dotted $lightGray;
+    width: 100%;
   }
 }
 
@@ -59,6 +75,18 @@
   justify-content: space-between;
   height: 88%;
 }
-.cart-wrapper-item{
+
+.cart-wrapper-item {
   overflow: auto;
+}
+
+.like,.purchases{
+  .cart-inner-img {
+    max-width: 70px;
+  }
+  .cart-inner {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }

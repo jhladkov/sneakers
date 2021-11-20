@@ -1,0 +1,88 @@
+@media (max-width: 780px) {
+  .slider-product .slider-product-inner {
+    flex-direction: column-reverse;
+    padding-left: 0;
+  }
+  .slider-product .slider-product-photo {
+    margin-bottom: 20px;
+  }
+  .slider-product .slider-product-inner .slider-product-info .slider-product-info-content .slider-product-info-content-title {
+    font-size: 29px;
+  }
+
+  .slider-product .slider-product-inner .slider-product-info .slider-product-info-logo {
+    margin-bottom: 0;
+  }
+
+  .slider-product-info {
+    display: flex;
+
+
+    align-items: center;
+
+    .slider-product-info-content {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 751px) {
+  .sneakers-inner {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .like,.purchases .cart-inner{
+    transform: translate(0,0) !important;
+    position: static !important;
+  }
+  .sneakers-header {
+    flex-direction: column;
+    .sneakers-title {
+      margin-bottom: 20px;
+    }
+  }
+
+  .slider-product-info {
+    flex-direction: column;
+  }
+  header .header-inner {
+    flex-direction: column;
+  }
+  header .header-inner .block-info {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .slider-product .slider-product-inner .slider-product-info .slider-product-info-content .slider-product-info-content-title {
+    font-size: 20px;
+  }
+  .cart-pay {
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .item-info-price {
+    margin-bottom: 20px;
+  }
+  .item-info-icon {
+    margin: 0 auto 0 0;
+  }
+  .cart-wrapper {
+    flex-direction: column;
+  }
+  .slider-product-info .slider-product-info-content {
+    flex-direction: column;
+  }
+  .slider-product .slider-product-inner {
+    padding-bottom: 10px;
+  }
+  .slider-product .slider-product-inner .slider-product-info .slider-product-info-content .slider-product-info-content-title {
+    margin-right: 0;
+  }
+}

@@ -3,13 +3,14 @@ import Title from "../title/Title";
 import Button from "../UI/button/Button";
 
 interface CartInnerProps {
-    changeStatusMenu: (arg: boolean) => void;
+    changeStatusMenu?: (arg: boolean) => void;
+    goHome?: () => void
     textContent: string;
     img:string;
     textTitle: string;
 }
 
-const CartInner:FC<CartInnerProps> = ({img,textContent,changeStatusMenu,textTitle}) => {
+const CartInner:FC<CartInnerProps> = ({img,textContent,changeStatusMenu,textTitle, goHome}) => {
     return (
         <div className='cart-inner'>
             <div className="cart-inner-img">
@@ -19,7 +20,14 @@ const CartInner:FC<CartInnerProps> = ({img,textContent,changeStatusMenu,textTitl
             <p className='cart-inner-text'>
                 {textContent}
             </p>
-            <Button onClick={() => changeStatusMenu(false)} className='cart-inner-button button'
+            <Button onClick={() => {
+                if (changeStatusMenu) {
+                    changeStatusMenu(false)
+                }
+                if (goHome) {
+                    goHome()
+                }
+            }} className='cart-inner-button button'
                     classSvg='go-back' text='Вернуться назад'/>
         </div>
     );

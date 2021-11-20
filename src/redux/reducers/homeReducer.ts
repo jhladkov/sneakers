@@ -6,29 +6,25 @@ const initialState: Home = {
     error: null,
     price: 0,
     loading: false,
-    cartItems: [],
+    activeMenu: false,
     boughtItems: [],
-    cartLikes: [],
-    activeMenu: false
 }
 
-export const homeReducer = (state = initialState, action:HomeAction ) : Home => {
+export const homeReducer = (state = initialState, action: HomeAction): Home => {
     switch (action.type) {
         case HomeActionType.FETCH_SNEAKERS:
             return {...state, loading: true}
         case HomeActionType.FETCH_SNEAKERS_SUCCESS:
-            return {...state, loading: false, items:action.payload}
+            return {...state, loading: false, items: action.payload}
         case HomeActionType.FETCH_SNEAKERS_ERROR:
             return {...state, error: action.payload}
-        case HomeActionType.ADD_SNEAKERS_TO_CART:
+        case HomeActionType.CHANGE_DATA_SNEAKERS:
             let sum = state.price + action.price
-            return {...state,cartItems:action.payload,price: sum}
-        case HomeActionType.ADD_SNEAKERS_TO_LIKE:
-            return {...state, cartLikes: action.payload}
+            return {...state, items: action.payload, price: sum}
         case HomeActionType.CHANGE_STATUS_MENU:
             return {...state, activeMenu: action.payload}
         case HomeActionType.ADD_SNEAKERS_TO_BOUGHT:
-            return {...state, boughtItems: state.boughtItems.concat(action.payload)}
+            return {...state, boughtItems: action.payload}
         default:
             return state
     }
