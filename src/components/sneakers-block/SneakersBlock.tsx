@@ -1,6 +1,5 @@
-import React, {FC, useEffect, useState, memo} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Svg from "../svg/Svg";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 export interface SneakersBlockProps {
     img: string;

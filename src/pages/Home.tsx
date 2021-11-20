@@ -1,4 +1,4 @@
-import React, {FC, useEffect, memo, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import Slide from "../components/slide/Slide";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -43,7 +43,6 @@ const Home: FC = () => {
             return false
         })
         setFilterSneakers(filterArrSneakers)
-        console.log('filterArrSneakers',filterArrSneakers)
     }
 
 
@@ -59,8 +58,10 @@ const Home: FC = () => {
             <Section className='section sneakers'>
                 <div className="sneakers-header">
                     <Title text='Все кросовки' className='sneakers-title title'/>
-                    <Input onChange={event => changeInputValue(event.target.value)} value={inputValue}
-                           className='sneakers-header-find' placeholder='Поиск...'/>
+                    <form>
+                        <Input onChange={event => changeInputValue(event.target.value)} value={inputValue}
+                               className='sneakers-header-find' placeholder='Поиск...'/>
+                    </form>
                 </div>
                 <div className="sneakers-inner">
                     {
@@ -93,4 +94,4 @@ const Home: FC = () => {
     );
 };
 
-export default memo(Home);
+export default Home;
