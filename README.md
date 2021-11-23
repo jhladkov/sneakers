@@ -5,4 +5,4 @@
 4. SCSS
 5. HTML
 6. Webpack
-
+7. Firebase
