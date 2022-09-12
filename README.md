@@ -1,4 +1,4 @@
-# В этом проекте использовались такие технологии:
+# Technology:
 1. React
 2. Redux
 3. TypeScript
